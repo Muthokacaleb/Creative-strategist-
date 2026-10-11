@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caleb Muthoka — Creative Strategist & Creative Lead</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#11110F',
+                            surface: '#1B1B18',
+                            surfaceLight: '#262622',
+                            white: '#F3F0E7',
+                            sand: '#D8CFBD',
+                            lime: '#D7FF5E',
+                            muted: '#8A8880',
+                            border: '#2E2D28'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Manrope', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #11110F;
+            color: #F3F0E7;
+            font-family: 'Manrope', sans-serif;
+        }
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        .mono-text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #11110F;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2E2D28;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D7FF5E;
+        }
+        .editorial-border {
+            border-color: #2E2D28;
+        }
+        .editorial-shadow {
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-lime selection:text-brand-bg relative">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <!-- Monogram Logo -->
+            <a href="#" class="group flex items-center gap-3">
+                <span class="w-10 h-10 rounded-sm bg-brand-surface border border-brand-border group-hover:border-brand-lime flex items-center justify-center font-bold text-brand-lime transition-colors">
+                    CM.
+                </span>
+                <span class="text-xs tracking-widest uppercase text-brand-sand font-medium hidden sm:inline-block">
+                    Caleb Muthoka
+                </span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-10 text-xs font-medium uppercase tracking-wider text-brand-sand">
+                <a href="#work" class="hover:text-brand-lime transition-colors">Work</a>
+                <a href="#approach" class="hover:text-brand-lime transition-colors">Approach</a>
+                <a href="#capabilities" class="hover:text-brand-lime transition-colors">Capabilities</a>
+                <a href="#about" class="hover:text-brand-lime transition-colors">About</a>
+            </div>
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <button onclick="toggleContactDrawer()" class="px-5 py-2.5 bg-brand-lime text-brand-bg font-bold text-xs uppercase tracking-wider hover:bg-white transition-all transform hover:-translate-y-0.5">
+                    Let's Talk
+                </button>
+            </div>
+
+            <!-- Mobile Burger Toggle -->
+            <button id="mobileMenuBtn" aria-label="Toggle Navigation" class="md:hidden text-brand-white p-2 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="fixed inset-0 z-50 bg-brand-bg flex flex-col justify-between p-8 transform translate-x-full transition-transform duration-300 md:hidden border-l border-brand-border">
+        <div class="flex justify-between items-center border-b border-brand-border pb-6">
+            <span class="font-bold text-brand-lime">CM.</span>
+            <button id="closeMobileMenuBtn" aria-label="Close Navigation" class="text-brand-sand hover:text-brand-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div class="flex flex-col gap-6 text-2xl font-bold uppercase tracking-wider">
+            <a href="#work" onclick="toggleMobileMenu()" class="hover:text-brand-lime">Work</a>
+            <a href="#approach" onclick="toggleMobileMenu()" class="hover:text-brand-lime">Approach</a>
+            <a href="#capabilities" onclick="toggleMobileMenu()" class="hover:text-brand-lime">Capabilities</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="hover:text-brand-lime">About</a>
+        </div>
+        <div class="pt-6 border-t border-brand-border">
+            <button onclick="toggleMobileMenu(); toggleContactDrawer()" class="w-full py-4 bg-brand-lime text-brand-bg font-bold text-sm uppercase tracking-wider">
+                Let's Talk
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-32 pb-20 flex flex-col justify-between max-w-7xl mx-auto px-6 lg:px-12 relative overflow-hidden">
+        <!-- Subtitle & Location -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-brand-border pb-6 gap-4">
+            <div class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-brand-lime animate-pulse"></span>
+                <span class="mono-text text-xs uppercase text-brand-lime tracking-widest font-semibold">CREATIVE STRATEGIST & CREATIVE LEAD</span>
+            </div>
+            <div class="mono-text text-xs uppercase text-brand-muted tracking-widest flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-sand"></i> NAIROBI, KENYA
+            </div>
+        </div>
+
+        <!-- Main Editorial Headline -->
+        <div class="my-12 lg:my-16">
+            <h1 class="text-4xl sm:text-6xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] text-brand-white">
+                I turn good ideas into work that <span class="serif-italic font-normal text-brand-sand">moves people.</span>
+            </h1>
+            <p class="mt-8 max-w-2xl text-base sm:text-lg text-brand-sand font-light leading-relaxed">
+                I work at the intersection of insight, storytelling and visual execution — developing ideas that make brands more distinctive and creative work more intentional.
+            </p>
+        </div>
+
+        <!-- Actions & Stats Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-8 border-t border-brand-border">
+            <div class="lg:col-span-6 flex flex-wrap gap-4">
+                <a href="#work" class="px-8 py-4 bg-brand-white text-brand-bg font-bold text-xs uppercase tracking-wider hover:bg-brand-lime transition-all flex items-center gap-3">
+                    Explore Selected Work <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                </a>
+                <button onclick="toggleContactDrawer()" class="px-8 py-4 border border-brand-border text-brand-white font-bold text-xs uppercase tracking-wider hover:border-brand-lime hover:text-brand-lime transition-all">
+                    Let's Collaborate
+                </button>
+            </div>
+            
+            <div class="lg:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-4 mono-text text-xs text-brand-muted">
+                <div class="p-4 bg-brand-surface border border-brand-border">
+                    <span class="block text-brand-lime text-lg font-bold mb-1">01</span>
+                    <span>Strategy</span>
+                </div>
+                <div class="p-4 bg-brand-surface border border-brand-border">
+                    <span class="block text-brand-lime text-lg font-bold mb-1">02</span>
+                    <span>Direction</span>
+                </div>
+                <div class="p-4 bg-brand-surface border border-brand-border">
+                    <span class="block text-brand-lime text-lg font-bold mb-1">03</span>
+                    <span>Content</span>
+                </div>
+                <div class="p-4 bg-brand-surface border border-brand-border">
+                    <span class="block text-brand-lime text-lg font-bold mb-1">04</span>
+                    <span>Execution</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Philosophy -->
+    <section class="py-24 bg-brand-surface border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-4">
+                    <span class="mono-text text-xs uppercase text-brand-lime tracking-widest block mb-3">01 // PHILOSOPHY</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-white leading-tight">
+                        Creativity is not decoration. <br/>
+                        <span class="serif-italic font-normal text-brand-sand">It's how a brand makes itself matter.</span>
+                    </h2>
+                </div>
+                <div class="lg:col-span-8 text-brand-sand font-light text-base sm:text-lg leading-relaxed space-y-6">
+                    <p>
+                        Strong creative work begins long before design, photography or video production starts. It begins with understanding the core problem, the audience, and the intended outcome.
+                    </p>
+                    <p>
+                        Strategy provides clear direction so ideas are grounded in purpose, while art direction and thoughtful execution transform those ideas into compelling visual and digital experiences that resonate.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work & Case Studies -->
+    <section id="work" class="py-28 max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-brand-border">
+            <div>
+                <span class="mono-text text-xs uppercase text-brand-lime tracking-widest block mb-2">02 // PORTFOLIO</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-white">Selected Work & Case Studies</h2>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-2 mt-6 md:mt-0 font-mono text-xs" id="filterContainer">
+                <button data-filter="all" class="filter-btn px-4 py-2 bg-brand-lime text-brand-bg font-bold">All</button>
+                <button data-filter="concept" class="filter-btn px-4 py-2 border border-brand-border text-brand-sand hover:text-brand-white">Concept Campaigns</button>
+                <button data-filter="photo" class="filter-btn px-4 py-2 border border-brand-border text-brand-sand hover:text-brand-white">Photography</button>
+                <button data-filter="identity" class="filter-btn px-4 py-2 border border-brand-border text-brand-sand hover:text-brand-white">Identity & Strategy</button>
+                <button data-filter="content" class="filter-btn px-4 py-2 border border-brand-border text-brand-sand hover:text-brand-white">Content Strategy</button>
+            </div>
+        </div>
+
+        <!-- Case Studies Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsGrid">
+            <!-- Rendered by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Creative Approach -->
+    <section id="approach" class="py-24 bg-brand-surface border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="max-w-2xl mb-16">
+                <span class="mono-text text-xs uppercase text-brand-lime tracking-widest block mb-2">03 // PROCESS</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-white">
+                    Strategy gives <span class="serif-italic font-normal text-brand-sand">creativity direction.</span>
+                </h2>
+                <p class="mt-4 text-brand-sand font-light text-sm sm:text-base">
+                    A deliberate four-stage methodology to take projects from messy insights to clear, aligned, and effective visual experiences.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="p-8 bg-brand-bg border border-brand-border relative group hover:border-brand-lime transition-all">
+                    <span class="mono-text text-2xl font-bold text-brand-lime block mb-6">01</span>
+                    <h3 class="text-xl font-bold text-brand-white mb-3">Discover</h3>
+                    <p class="text-xs text-brand-sand leading-relaxed font-light">
+                        Understand the audience, business objective, context, competition and the precise problem that needs solving.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="p-8 bg-brand-bg border border-brand-border relative group hover:border-brand-lime transition-all">
+                    <span class="mono-text text-2xl font-bold text-brand-lime block mb-6">02</span>
+                    <h3 class="text-xl font-bold text-brand-white mb-3">Define</h3>
+                    <p class="text-xs text-brand-sand leading-relaxed font-light">
+                        Find the core human insight, establish the key strategic message, and develop a distinct creative concept.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="p-8 bg-brand-bg border border-brand-border relative group hover:border-brand-lime transition-all">
+                    <span class="mono-text text-2xl font-bold text-brand-lime block mb-6">03</span>
+                    <h3 class="text-xl font-bold text-brand-white mb-3">Direct</h3>
+                    <p class="text-xs text-brand-sand leading-relaxed font-light">
+                        Translate concept into art direction, visual language, content formats, and execution guidelines for specialists.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="p-8 bg-brand-bg border border-brand-border relative group hover:border-brand-lime transition-all">
+                    <span class="mono-text text-2xl font-bold text-brand-lime block mb-6">04</span>
+                    <h3 class="text-xl font-bold text-brand-white mb-3">Deliver & Learn</h3>
+                    <p class="text-xs text-brand-sand leading-relaxed font-light">
+                        Coordinate production, review creative quality, gather feedback and evaluate results against initial objectives.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section id="capabilities" class="py-28 max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="mb-16">
+            <span class="mono-text text-xs uppercase text-brand-lime tracking-widest block mb-2">04 // CAPABILITIES</span>
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-white">Areas of Competence</h2>
+            <p class="text-brand-sand font-light text-sm sm:text-base mt-2">Core pillars where strategic thinking meets creative execution.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Pillar 1 -->
+            <div class="p-8 bg-brand-surface border border-brand-border">
+                <div class="w-10 h-10 bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lime mb-6">
+                    <i data-lucide="compass" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-lg font-bold text-brand-white mb-4 pb-2 border-b border-brand-border">Creative Strategy</h3>
+                <ul class="space-y-2.5 text-xs text-brand-sand font-light">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Audience research & insight</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Brand positioning</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Campaign concept development</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Creative briefs</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Messaging & storytelling</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Content planning</li>
+                </ul>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="p-8 bg-brand-surface border border-brand-border">
+                <div class="w-10 h-10 bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lime mb-6">
+                    <i data-lucide="eye" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-lg font-bold text-brand-white mb-4 pb-2 border-b border-brand-border">Creative Direction</h3>
+                <ul class="space-y-2.5 text-xs text-brand-sand font-light">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Visual direction</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Art direction</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Photography direction</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Visual consistency</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Concept presentation</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Quality control & feedback</li>
+                </ul>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="p-8 bg-brand-surface border border-brand-border">
+                <div class="w-10 h-10 bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lime mb-6">
+                    <i data-lucide="layers" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-lg font-bold text-brand-white mb-4 pb-2 border-b border-brand-border">Creative Execution</h3>
+                <ul class="space-y-2.5 text-xs text-brand-sand font-light">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Graphic design</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Photography</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Short-form video concepts</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Digital content</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Website concepts</li>
+                </ul>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="p-8 bg-brand-surface border border-brand-border">
+                <div class="w-10 h-10 bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lime mb-6">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-lg font-bold text-brand-white mb-4 pb-2 border-b border-brand-border">Creative Leadership</h3>
+                <ul class="space-y-2.5 text-xs text-brand-sand font-light">
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Creative problem-solving</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Cross-functional collaboration</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Project coordination</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Presenting ideas</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Guiding execution</li>
+                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-lime rounded-full"></span> Evaluating creative work</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Caleb & Leadership Philosophy -->
+    <section id="about" class="py-24 bg-brand-surface border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Monogram Placeholder Badge -->
+                <div class="lg:col-span-5 relative">
+                    <div class="aspect-square bg-brand-bg border border-brand-border p-8 flex flex-col justify-between relative overflow-hidden">
+                        <div class="flex justify-between items-start">
+                            <span class="mono-text text-xs text-brand-lime">CM.</span>
+                            <span class="mono-text text-xs text-brand-muted">NAIROBI, KE</span>
+                        </div>
+
+                        <!-- Central Typography Graphic -->
+                        <div class="text-center py-12">
+                            <span class="text-7xl font-extrabold text-brand-white tracking-tighter block">CALEB</span>
+                            <span class="serif-italic text-3xl text-brand-sand font-light block">Muthoka</span>
+                        </div>
+
+                        <div class="border-t border-brand-border pt-4 flex justify-between items-center text-xs mono-text text-brand-sand">
+                            <span>STRATEGY & LEADERSHIP</span>
+                            <span class="text-brand-lime">2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Profile -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div>
+                        <span class="mono-text text-xs uppercase text-brand-lime tracking-widest block mb-2">05 // ABOUT</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-white">
+                            Curious by nature. <span class="serif-italic font-normal text-brand-sand">Intentional by design.</span>
+                        </h2>
+                    </div>
+
+                    <div class="text-brand-sand font-light text-base sm:text-lg leading-relaxed space-y-4">
+                        <p>
+                            I'm Caleb Muthoka, a Nairobi-based creative working across photography, graphic design, technology and digital content.
+                        </p>
+                        <p>
+                            I'm interested in the space where a sharp idea meets thoughtful execution — where strategy gives creative work purpose and visual storytelling makes it memorable.
+                        </p>
+                        <p>
+                            I'm building my practice around asking better questions, developing stronger concepts and helping creative ideas become clear, coherent experiences.
+                        </p>
+                    </div>
+
+                    <!-- Leadership Philosophy Block -->
+                    <div class="p-6 bg-brand-bg border-l-2 border-brand-lime text-xs text-brand-sand space-y-2">
+                        <span class="mono-text font-bold text-brand-lime uppercase tracking-wider block">Leadership Philosophy</span>
+                        <p class="italic text-sm text-brand-white">
+                            "Creative leadership is not about having every idea or controlling every detail. It's about establishing a clear direction, helping people understand the purpose of the work, and creating the conditions for good ideas to become excellent."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA Banner -->
+    <footer class="py-20 max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-brand-border pb-12 gap-8">
+            <div>
+                <span class="mono-text text-xs uppercase text-brand-lime tracking-widest block mb-2">LET'S CONNECT</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-white">Ready to make something intentional?</h2>
+            </div>
+            <button onclick="toggleContactDrawer()" class="px-8 py-4 bg-brand-lime text-brand-bg font-bold text-xs uppercase tracking-wider hover:bg-white transition-all">
+                Start a Conversation
+            </button>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs mono-text text-brand-muted gap-4">
+            <p>&copy; 2026 Caleb Muthoka. All Rights Reserved.</p>
+            <p>Creative Strategy & Direction — Nairobi, Kenya</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Case Study Modal Drawer -->
+    <div id="caseStudyModal" class="fixed inset-0 z-50 bg-brand-bg/90 backdrop-blur-md hidden flex items-center justify-center p-4 lg:p-12 overflow-y-auto">
+        <div class="bg-brand-surface border border-brand-border max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 editorial-shadow relative">
+            <button onclick="closeCaseStudyModal()" aria-label="Close case study" class="absolute top-6 right-6 p-2 text-brand-sand hover:text-brand-lime">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div id="modalBody">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Slide-out Drawer -->
+    <div id="contactDrawer" class="fixed inset-0 z-50 bg-brand-bg/80 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-brand-surface border-l border-brand-border w-full max-w-xl h-full p-8 sm:p-12 overflow-y-auto flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center pb-6 border-b border-brand-border mb-8">
+                    <span class="mono-text text-xs uppercase text-brand-lime">LET'S TALK</span>
+                    <button onclick="toggleContactDrawer()" aria-label="Close drawer" class="text-brand-sand hover:text-brand-white">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <h3 class="text-2xl font-bold text-brand-white mb-2">Direct Inquiry</h3>
+                <p class="text-xs text-brand-sand font-light mb-8">Fill in the details or email directly at <button onclick="copyEmail()" class="text-brand-lime underline">hello@calebmuthoka.com</button></p>
+
+                <form id="contactForm" class="space-y-5">
+                    <div>
+                        <label class="block mono-text text-xs text-brand-sand mb-2">YOUR NAME *</label>
+                        <input type="text" required placeholder="Jane Doe" class="w-full bg-brand-bg border border-brand-border p-3.5 text-xs text-brand-white focus:outline-none focus:border-brand-lime">
+                    </div>
+                    <div>
+                        <label class="block mono-text text-xs text-brand-sand mb-2">EMAIL ADDRESS *</label>
+                        <input type="email" required placeholder="jane@example.com" class="w-full bg-brand-bg border border-brand-border p-3.5 text-xs text-brand-white focus:outline-none focus:border-brand-lime">
+                    </div>
+                    <div>
+                        <label class="block mono-text text-xs text-brand-sand mb-2">PROJECT NATURE</label>
+                        <select class="w-full bg-brand-bg border border-brand-border p-3.5 text-xs text-brand-white focus:outline-none focus:border-brand-lime">
+                            <option>Creative Strategy & Concept</option>
+                            <option>Art Direction & Identity</option>
+                            <option>Photography & Visual Content</option>
+                            <option>General Collaboration</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block mono-text text-xs text-brand-sand mb-2">MESSAGE / BRIEF *</label>
+                        <textarea rows="4" required placeholder="Outline your project scope, timing and goals..." class="w-full bg-brand-bg border border-brand-border p-3.5 text-xs text-brand-white focus:outline-none focus:border-brand-lime resize-none"></textarea>
+                    </div>
+
+                    <div id="contactToast" class="hidden p-3 bg-brand-lime/10 border border-brand-lime text-brand-lime text-xs">
+                        Message sent! Caleb will respond shortly.
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-brand-lime text-brand-bg font-bold text-xs uppercase tracking-wider hover:bg-white transition-all">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="pt-8 border-t border-brand-border mono-text text-xs text-brand-muted flex justify-between">
+                <span>Nairobi, Kenya</span>
+                <div class="flex gap-4 text-brand-sand">
+                    <a href="#" class="hover:text-brand-lime">LinkedIn</a>
+                    <a href="#" class="hover:text-brand-lime">Behance</a>
+                    <a href="#" class="hover:text-brand-lime">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Case Studies Data Model
+        const caseStudies = [
+            {
+                id: "01",
+                title: "Make Room for What's Next",
+                category: "concept",
+                categoryLabel: "Concept Campaign",
+                type: "Self-Initiated Concept Project",
+                summary: "A conceptual campaign built for ambitious local businesses needing to differentiate themselves in crowded markets.",
+                background: "Ambitious businesses in emerging African urban hubs face market saturation. Generic functional marketing fails to build long-term emotional resonance.",
+                insight: "Modern audiences respond to brands that express progress, movement and distinct ambition rather than standard features.",
+                strategy: "Position growth not as aggressive expansion, but as intentionally clearing space for innovation. 'Make room for what's next.'",
+                concept: "Single core narrative translated across social teasers, photography direction, short-form video storyboards, and interactive landing page design.",
+                execution: "Developed visual identity rules, high-contrast monochrome imagery with acid accents, and short script treatments.",
+                reflection: "Demonstrates how one strategic hook scales across digital channels cleanly without diluting brand voice."
+            },
+            {
+                id: "02",
+                title: "People Are the Story",
+                category: "photo",
+                categoryLabel: "Photography & Storytelling",
+                type: "Visual Exploration Project",
+                summary: "Intentional portraiture and atmospheric visual storytelling celebrating human expression and event culture in Nairobi.",
+                background: "Commercial portraiture often defaults to over-lit, sterile imagery that lacks character and authentic emotion.",
+                insight: "Real human connection happens in candid moments, subtle shadow play, and unforced posture.",
+                strategy: "Focus on atmospheric lighting, organic color tones, and unobtrusive positioning during live assignments.",
+                concept: "Human expression, atmosphere, visual consistency and narrative framing over artificial staging.",
+                execution: "Curated series of editorial portraits and event documentations utilizing natural light and rich shadow detail.",
+                reflection: "Serves as a foundation for photography direction across editorial and commercial brand storytelling."
+            },
+            {
+                id: "03",
+                title: "Form + Function",
+                category: "identity",
+                categoryLabel: "Brand Strategy & Identity",
+                type: "Conceptual Strategy Exercise",
+                summary: "An exploration into how positioning, typography, visual identity and digital experience work in harmony.",
+                background: "Brands frequently treat visual identity as isolated graphics rather than an integrated extension of positioning strategy.",
+                insight: "A brand becomes recognizable through systematic consistency rather than complex decoration.",
+                strategy: "Align every typographical choice, color boundary, and user interface element with the core positioning claim.",
+                concept: "Minimalist structure balanced with expressive editorial typography and distinct spatial rhythms.",
+                execution: "Created complete digital brand system guidelines, editorial typography pairings, and layout grid frameworks.",
+                reflection: "Proves that minimalist design paired with sharp messaging yields greater brand authority."
+            },
+            {
+                id: "04",
+                title: "One Idea. Many Touchpoints.",
+                category: "content",
+                categoryLabel: "Content Strategy & Direction",
+                type: "Content Strategy System",
+                summary: "Demonstrating how a single creative concept translates into a multi-format digital content ecosystem.",
+                background: "Content creators and brands struggle with content fragmentation across platforms like Instagram, LinkedIn and web.",
+                insight: "Audiences consume content differently per platform, but the underlying narrative core must remain constant.",
+                strategy: "Establish primary content pillars and message hierarchy to guide adaptation across carousel posts, reels, and web features.",
+                concept: "One central campaign message adapted into platform-native formats while maintaining visual consistency.",
+                execution: "Designed modular carousel templates, short-form video storyboard hooks, and publishing cadence frameworks.",
+                reflection: "Establishes a practical methodology for brands to scale content output efficiently."
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderProjects('all');
+            initFilters();
+            initContactForm();
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+        document.getElementById('closeMobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // Contact Drawer Toggle
+        function toggleContactDrawer() {
+            const drawer = document.getElementById('contactDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        // Render Projects Grid
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projectsGrid');
+            const filtered = filter === 'all' ? caseStudies : caseStudies.filter(c => c.category === filter);
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="bg-brand-surface border border-brand-border p-8 flex flex-col justify-between group hover:border-brand-lime transition-all duration-300">
+                    <div>
+                        <div class="flex justify-between items-start mb-6 border-b border-brand-border pb-4">
+                            <span class="mono-text text-xs text-brand-lime font-bold">PROJECT ${item.id}</span>
+                            <span class="mono-text text-[10px] uppercase px-2 py-1 bg-brand-bg border border-brand-border text-brand-sand">${item.type}</span>
+                        </div>
+                        <span class="mono-text text-xs uppercase text-brand-muted tracking-wider block mb-2">${item.categoryLabel}</span>
+                        <h3 class="text-2xl font-bold text-brand-white mb-3 group-hover:text-brand-lime transition-colors">${item.title}</h3>
+                        <p class="text-xs text-brand-sand font-light leading-relaxed mb-6">${item.summary}</p>
+                    </div>
+                    <button onclick="openCaseStudyModal('${item.id}')" class="w-full py-3 border border-brand-border text-brand-white mono-text text-xs font-semibold uppercase tracking-wider group-hover:bg-brand-lime group-hover:text-brand-bg group-hover:border-brand-lime transition-all flex items-center justify-center gap-2">
+                        View Case Study <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Filter Controls
+        function initFilters() {
+            const container = document.getElementById('filterContainer');
+            container.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    container.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('bg-brand-lime', 'text-brand-bg', 'font-bold');
+                        btn.classList.add('border', 'border-brand-border', 'text-brand-sand');
+                    });
+                    e.target.classList.add('bg-brand-lime', 'text-brand-bg', 'font-bold');
+                    e.target.classList.remove('border', 'border-brand-border', 'text-brand-sand');
+                    renderProjects(e.target.dataset.filter);
+                }
+            });
+        }
+
+        // Modal Functionality
+        function openCaseStudyModal(id) {
+            const item = caseStudies.find(c => c.id === id);
+            if (!item) return;
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="border-b border-brand-border pb-6 mb-6">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono-text text-xs text-brand-lime font-bold">CASE STUDY // ${item.id}</span>
+                        <span class="mono-text text-[10px] uppercase px-2 py-0.5 bg-brand-bg border border-brand-border text-brand-sand">${item.type}</span>
+                    </div>
+                    <h2 class="text-3xl font-extrabold text-brand-white mb-2">${item.title}</h2>
+                    <p class="mono-text text-xs text-brand-muted uppercase">${item.categoryLabel}</p>
+                </div>
+
+                <div class="space-y-6 text-xs text-brand-sand font-light leading-relaxed">
+                    <div>
+                        <h4 class="mono-text font-bold text-brand-lime uppercase mb-1">01. Background & Problem</h4>
+                        <p class="p-3 bg-brand-bg border border-brand-border">${item.background}</p>
+                    </div>
+                    <div>
+                        <h4 class="mono-text font-bold text-brand-lime uppercase mb-1">02. Human Insight</h4>
+                        <p class="p-3 bg-brand-bg border border-brand-border">${item.insight}</p>
+                    </div>
+                    <div>
+                        <h4 class="mono-text font-bold text-brand-lime uppercase mb-1">03. Strategic Direction</h4>
+                        <p class="p-3 bg-brand-bg border border-brand-border">${item.strategy}</p>
+                    </div>
+                    <div>
+                        <h4 class="mono-text font-bold text-brand-lime uppercase mb-1">04. Core Creative Concept</h4>
+                        <p class="p-3 bg-brand-bg border border-brand-border">${item.concept}</p>
+                    </div>
+                    <div>
+                        <h4 class="mono-text font-bold text-brand-lime uppercase mb-1">05. Execution Approach</h4>
+                        <p class="p-3 bg-brand-bg border border-brand-border">${item.execution}</p>
+                    </div>
+                    <div>
+                        <h4 class="mono-text font-bold text-brand-lime uppercase mb-1">06. Reflection</h4>
+                        <p class="p-3 bg-brand-bg border border-brand-border">${item.reflection}</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-brand-border flex justify-end">
+                    <button onclick="closeCaseStudyModal()" class="px-6 py-2.5 bg-brand-lime text-brand-bg font-bold mono-text text-xs uppercase">Close Study</button>
+                </div>
+            `;
+
+            document.getElementById('caseStudyModal').classList.remove('hidden');
+        }
+
+        function closeCaseStudyModal() {
+            document.getElementById('caseStudyModal').classList.add('hidden');
+        }
+
+        // Copy Email Utility
+        function copyEmail() {
+            const email = "hello@calebmuthoka.com";
+            navigator.clipboard.writeText(email).then(() => {
+                alert("Email copied to clipboard: " + email);
+            });
+        }
+
+        // Contact Form Handling
+        function initContactForm() {
+            const form = document.getElementById('contactForm');
+            const toast = document.getElementById('contactToast');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                    form.reset();
+                    toggleContactDrawer();
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
